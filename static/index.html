@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zaloguj sb</title>
+  </head>
+  <body>
+    <input id="nick" />
+    <button onclick="wejdzdolobby()">wejdz do lobby</button>
+    <script>
+      function wejdzdolobby() {
+        var nick = document.getElementById('nick').value;
+        fetch('/wyslij-nick', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ nick: nick }),
+        }).then(() => (location.href = '/lobby'));
+      }
+    </script>
+  </body>
+</html>
